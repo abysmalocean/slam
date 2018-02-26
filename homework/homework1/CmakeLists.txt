@@ -1,0 +1,3 @@
+project(HelloSLAM)
+
+add_executable(sayHello main.cpp)

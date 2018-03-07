@@ -91,13 +91,16 @@ int main( int argc, char** argv )
 
     clock_t time_stt = clock(); // 计时
     // 直接求逆
-    Eigen::Matrix<double,MATRIX_SIZE,1> x = matrix_NN.inverse()*v_Nd;
+    Eigen::Matrix<double,MATRIX_SIZE,1> x1 = matrix_NN.inverse()*v_Nd;
     cout <<"time use in normal inverse is " << 1000* (clock() - time_stt)/(double)CLOCKS_PER_SEC << "ms"<< endl;
-    
+
 	// 通常用矩阵分解来求，例如QR分解，速度会快很多
     time_stt = clock();
-    x = matrix_NN.colPivHouseholderQr().solve(v_Nd);
+    Eigen::Matrix<double,MATRIX_SIZE,1> x2 = matrix_NN.colPivHouseholderQr().solve(v_Nd);
     cout <<"time use in Qr decomposition is " <<1000*  (clock() - time_stt)/(double)CLOCKS_PER_SEC <<"ms" << endl;
+    if(x1.isApprox(x2)) {
+      printf("Result is Equal\n");
+    }
 
     return 0;
 }

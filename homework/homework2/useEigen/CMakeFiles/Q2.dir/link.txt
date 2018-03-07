@@ -1,1 +1,1 @@
-/usr/bin/c++   -O3 -O3 -DNDEBUG   CMakeFiles/Q2.dir/Q2.cpp.o  -o Q2 -rdynamic 
+/usr/bin/c++  -O3 -O3 -DNDEBUG  -rdynamic CMakeFiles/Q2.dir/Q2.cpp.o  -o Q2 

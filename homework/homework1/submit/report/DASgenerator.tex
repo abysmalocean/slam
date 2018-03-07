@@ -84,7 +84,7 @@ install(FILES include/hello.h DESTINATION "/usr/local/include/")
 \end{lstlisting}
 
 
-\subsection{理解 ORB-SLAM2 框架}
+\section{理解 ORB-SLAM2 框架}
 \subsection{Download}
 
 \begin{figure}[h]
@@ -94,6 +94,45 @@ install(FILES include/hello.h DESTINATION "/usr/local/include/")
 
 \subsection{Answer Questions}
 \subsubsection{ORB-SLAM2 将编译出什么结果?有几个库文件和可执行文件?}
-The 
+compile 19 library files in src/ and link those library with opencv, eigen3, pangolin,DBoW2 and g2o. Complication will generate six executable files and saved in the /Example/** folder. 
+
+\subsubsection{ORB-SLAM2 中的 include, src, Examples 三个文件夹中都含有什么内容?}
+include have all the header file, and src have all the source code. Example folder contains different examples for using this research project. 
+
+\subsubsection{ORB-SLAM2 中的可执行文件链接到了哪些库?它们的名字是什么?}
+OpenCV, computer vision\\
+eige3, for matrix computation\\
+Pangolin, for display\\
+
+\section{使用摄像头或视频运行 ORB-SLAM2}
+\subsection{compilation finish}
+\begin{figure}[h]
+	\includegraphics[width=6cm]{compile.png}
+	\centering
+\end{figure}
+
+\subsection{CMakeLists.txt 修改方案}
+move the code\ folder under Example\ Then add the following code to CmakeList.txt. Two executable files will be created, one is for recorded video called video, another is for the video camera, called cam. 
+
+\begin{lstlisting}
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/code)
+add_executable(video
+Examples/code/myvideo.cpp)
+target_link_libraries(video ${PROJECT_NAME})
+
+add_executable(cam
+Examples/code/myslam.cpp)
+target_link_libraries(cam ${PROJECT_NAME})
+
+\end{lstlisting}
+
+\subsection{Result}
+CMake give us a very robust compilation environment setup. 
+\begin{figure}[h]
+	\includegraphics[width=8cm]{camerara.png}
+	\centering
+\end{figure}
+
 \clearpage\end{CJK*}
 \end{document}

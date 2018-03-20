@@ -16,7 +16,7 @@ int main ( int argc, char** argv )
         cerr<<"文件"<<argv[1]<<"不存在."<<endl;
         return 0;
     }
-    
+
     // 文件顺利读取, 首先输出一些基本信息
     cout<<"图像宽为"<<image.cols<<",高为"<<image.rows<<",通道数为"<<image.channels()<<endl;
     cv::imshow ( "image", image );      // 用cv::imshow显示图像
@@ -58,8 +58,9 @@ int main ( int argc, char** argv )
     image_another ( cv::Rect ( 0,0,100,100 ) ).setTo ( 0 ); // 将左上角100*100的块置零
     cv::imshow ( "image", image );
     cv::waitKey ( 0 );
-    
+
     // 使用clone函数来拷贝数据
+    // deep copy
     cv::Mat image_clone = image.clone();
     image_clone ( cv::Rect ( 0,0,100,100 ) ).setTo ( 255 );
     cv::imshow ( "image", image );

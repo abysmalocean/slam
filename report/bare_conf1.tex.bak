@@ -1,0 +1,833 @@
+
+%% bare_conf.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+%\documentclass[conference]{IEEEtran}
+\documentclass[10pt, conference, compsocconf]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+
+
+
+% *** CITATION PACKAGES ***
+\usepackage{url}
+\usepackage{cite}
+\usepackage[numbers,square, comma, sort&compress]{natbib}
+%\usepackage[comma]{natbib}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% \cite{http://www.ctan.org/tex-archive/macros/latex/contrib/cite/}
+% The documentation is contained in the cite.sty file itself.
+
+
+\usepackage[T1]{fontenc}
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithm2e}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+\usepackage{algorithm} %format of the algorithm
+\usepackage{algorithmic} %format of the algorithm
+\usepackage{multirow} %multirow for format of table
+\usepackage{amsmath}
+\usepackage{xcolor}
+%\usepackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+\usepackage{graphicx}
+\usepackage{subfloat}
+\usepackage{float}
+
+\usepackage{caption}
+%\captionsetup[table]{belowskip=18pt, aboveskip = 5pt}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+\nocite{*}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Locality-Driven Dynamic Flash Cache Allocation}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Qianbin Xia and Weijun Xiao}
+\IEEEauthorblockA{Department of Electrical and Computer Engineering\\
+Virginia Commonwealth University\\
+Email: \{xiaq2, wxiao\}@vcu.edu}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+%
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3},
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+%\boldmath
+Flash-based SSDs are widely deployed as the storage caches to boost the system performance. However, unlike the traditional cache devices such as SRAM and DRAM, SSDs have internal garbage collection activities, which can severely degrade the cache performance. Moreover, SSD can only sustain limited P/E cycles. Therefore, traditional cache hit ratio oriented optimizations might not obtain the optimal performance for the SSD cache and can even shorten the device lifetime, especially for the SSD write cache, which could introduce more internal garbage collection processes and lifetime concerns. In this paper, we propose a reuse distance aware cache management to improve both the performance and lifetime of SSD cache by compromising the cache hit ratio and the internal garbage collection overhead.
+\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the conference you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals/conferences frown on
+% math in the abstract anyway.
+
+
+%% no keywords
+%\vspace{1em}
+%
+%\noindent \textbf{Keywords:}\quad Flash memory, Out-of-place update, Read cache, LRU.
+% \vspace{1em}
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+Nowadays, both personal laptops and large data centers are equipped with large main memory to bridge the huge performance gap between the high-performance processors and  slow storage systems. This large main memory can be effective for hiding the latency of read-intensive workloads \cite{ousterhout1989beating}, especially for workloads with good locality. However, for write requests, the main memory is much less effective due to its volatile nature, which means that data could be lost during power failure. Therefore, unlike read cache, which follows the popular cache algorithms like LRU and ARC, write buffering are using the write through policy or the high-low water mark to guide the data flushing processes. Whenever the number of dirty data reaches a predefined threshold (high water mark), the dirty data will be flushed back to the underlying hard disks \cite{batsakis2008awol}. Therefore, the write operations have been identified as the dominate traffic to the storage system and the performance-critical part of the whole systems equipped with large main memory \cite{bhadkamkar2009borg, koller2010deduplication, roselli2000comparison, verma2010srcmap}.
+
+Nonvolatile memory techniques such as NAND Flash-based SSDs, phase change memory (PCM), spin transfer torque RAM (STT-RAM), and resistive RAM (ReRAM) are possible solutions to improve the performance of IO intensive workloads as caches or replacements of main memory, a comprehensive summary could be found in \cite{mittal2016survey}. Currently, NAND Flash-based SSDs are the only mature, widely produced, and deployed technique. STT-RAM and ReRAM are still under the research stage and currently not in volume production. Although PCM has been existed for a long time with some real-world products, PCM has never been widely deployed due to its high production cost and high write power consumption, which is even higher than DRAM. Nowadays, energy consumption has become a critical design issue for servers and big data centers, where the low power consumption advantage of SSDs has been explored to save the energy \cite{kgil2006Flashcache, lee2008augmenting, song2011solid}.
+Moreover, Kim et al. \cite{kim2014evaluating} observed that although PCM has a better physical write performance, Flash-based SSDs can achieve a better system level write performance. The major reason is that
+PCM has limited write parallelism due to its high write energy consumption. While, SSD can be easily scaled to obtain high write bandwidth. In this paper, we are interested in the adopting of Flash memory as a write cache for disks
+ because of its huge capacity, low energy consumption, and high achievable write bandwidth. Previous work have presented the benefits of using SSDs as write caches for write-dominated tasks \cite{chen2011hystor,koller2013write,kim2015request}.
+ SSDs have several merits that make it a good candidate for write cache devices between the main memory and hard disk. First, the performance of SSDs are two to three orders of magnitude higher than the hard disk. Second, SSDs are much cheaper than DRAM. Third, SSD is nonvolatile (never losing data with power off and no cold cache misses). Due to the nonvolatile nature of SSDs, it could be used as a write back cache and follow the normal cache algorithms like LRU. Despite all the above merits, SSDs have several limitations, especially the internal garbage collection processes and limited lifetime. In order to update a Flash page in-place, the whole Flash block
+(usually consists of 64-256 Flash pages) need to be erased, which will introduce remarkable latency for the write operation. To hide this latency, SSD adopts the out-of-place update by relocating the new date to other pre-reserved free space and marking the old data as invalid. To support the out-of-place update, part of the SSD capacity will be reserved as the over provisional space, which is typically 7\%-35\% of the total SSD capacity. When the accumulation of the invalid data reduces the available free space to a predefined threshold, a garbage collection process will be trigged to reclaim the invalid Flash pages. The garbage collection is a timing consuming process, which could significantly degrade the performance of SSDs. A higher over-provisional configuration could delay and reduce the internal garbage collection processes.
+
+Another major concern of applying Flash-based SSDs as write caches is the limited endurance. For example, the limited program/erase cycles for SLC Flash memory is about 10,000 from the manufacturers' datasheets. In reality, the block P/E limitation is defined to meet the retention and reliability specifications in industrial standards, e.g., the JEDEC standard JESD47G.01 \cite{jedec2010sdram} specifies that NAND Flash blocks cycled to 10\% of the P/E limitation must have a retention time of ten years, and fully cycled blocks must have a one-year retention time. However, when SSDs are used as write caches, the cold data will be quickly evicted out, while the hot data will be updated within limited reference intervals. Therefore, the requirement of
+retention time could be highly relaxed and the endurance of SSD write cache will be notably extended. Previous work have shown the possibility of extending the SSD endurance by the relaxing of retention time \cite{pan2012quasi,huang2014aggressive}.
+ Besides, the advancement of error correction codes like LDPC can also help to prolong the lifetime of SSDs \cite{zhao2013ldpc,xia2016improving} without noticeable sacrificing of SSD write performance.
+
+Most existing advanced cache algorithms like LIRS \cite{jiang2002lirs} and ARC \cite{megiddo2003arc} all target the traditional cache devices such as DRAM and SRAM, and use the cache hit ratio as the performance metric. Even the latest cache optimizations, which target the SSDs, still try to capture the maximum cache hit ratio \cite{huang2016improving,cheng2016erasing}. However, due to the internal garbage collection processes, blindly try to maximum the cache hit ratio may lead to suboptimal performance as showed in \cite{xia2016high, oh2012caching}.  For a SSD write cache, there is a compromise between the cache space and over provisional space to obtain the optimal cache performance. On one hand, more cache space means higher cache hit ratio, but less over provisional space and higher garbage collection overhead. On the other hand, less cache space means more over provisional space and lower garbage collection cost, but at the same time lower cache hit ratio. Hence, how to make the best compromise between the cache space and over provisional space is of crucial importance to obtain the optimal cache performance.
+
+Miss ratio curve (MRC) is a powerful performance metric representing the relationship between the cache miss ratio and cache capacity. Previously, the MRC is relegated as an offline modeling due to the extremely high memory and computing resource demands. However, recent advances like \cite{waldspurger2015efficient, hu2016kinetic} make it possible to generate a lightweight and continuously-updated miss ratio curves online. In this paper we will show how MRCs can be leveraged to guide the SSD capacity allocation between the cache space and over provisional space to achieve the optimal write cache performance.
+
+The rest of this paper is organized as follows. In Section II, we describe the background on SSD and MRCs. Section III presents the details of our proposed dynamically SSD allocation scheme. Section IV presents the evaluation methodology and the experimental results. The related work is included in Section V. Section VI presents concluding remarks.
+
+\section{Background and Motivation}
+\subsection{NAND Flash-Based SSD}
+Currently, there are three widely used types of Flash memories in the market: SLC (single-level cell, storing one bit information per cell), MCL (multi-level cell, storing two bits information per cell), and TLC (Tri-level cell, storing three bits information per cell). MLC and TLC could significantly increase the capacity and density of Flash memory with the penalty of sacrificed performance and lifetime. Due to the relative higher performance and better endurance, SLC-based Flash memory is a more suitable candidate for the storage cache, especially for the enterprise workloads. Therefore, in this paper, we only consider the SLC-based Flash memory.
+
+Flash-based SSDs have two noticeable special properties compared with traditional cache devices like DRAM.  First, SSDs can only support out-of-place update. Second, each Flash block can only sustain limited P/E cycles. To make SSDs compatible with existing file systems designed for traditional in-place update devices, an Flash Translation Layer (FTL) is deployed inside SSDs. A typical FTL has three major function units: address translator, garbage collector, and ware-leveler. The address translator is responsible for maintaining an address mapping table between the logical page number and physical page number and performing the address translation. The address mapping methods could be coarsely classified into three major categories based on the mapping granularity: page-level mapping, block-level mapping, and hybrid mapping. A page-level mapping \cite{chiang1999using} can obtain the best performance by maintaining the mapping information for each individual Flash pages, but it also has the highest memory overhead. In contrast to the page mapping scheme, a block-level mapping \cite{ban1995Flash} builds the mapping table in the unit of Flash blocks and has the least memory consumption, but it will lead to space wastage and performance degradation. To make a compromise, several hybrid schemes \cite{lee2007log, lee2008last} combining the page-level mapping scheme with the block-level mapping scheme have been proposed. To update a data block, the new data will be redirected to the pre-reserved over-provisioning space and the old data will be marked as invalid by updating the mapping table. The task of a garbage collector is to reclaim the invalid Flash pages and make room for the coming request in the future. Whenever, the pre-reserved free over-provisioning space is below a predefined threshold, a garbage collection process is trigged to reclaim the space occupied by the invalid data. The garbage collection will first migrate the valid pages in the victim block to other free block and then erase the whole victim block. The garbage collection is a time-consuming process and can block the Flash packages or planes from servicing the coming requests. Many different garbage collection schemes have been proposed, the greedy garbage collection policy \cite{bux2010performance} is one of the most widely used, which always try to generate the largest number of free space during the garbage collection process. The objective of wear-leveler is to evenly distribute the erase operations over the Flash blocks to prolong the whole lifetime of SSDs. Due to the internal garbage collection process and limited lifetime issue of SSDs, the traditional cache algorithms that use the cache hit ratio as the only metric may not achieve the consistent performance gain for SSD cache and may even shorten the lifetime. For simplicity, we assume the page-level mapping, greedy garbage collection, and no wear-leveler are used in our design.
+
+\subsection{Miss Ratio Curves}
+The reuse distance (reuse distance is defined as the number of distinctive data elements accessed between two consecutive uses of the same element) of workloads is of prominent importance for the performance prediction and optimization of storage and CPU caches. Miss ratio curve (MRC) is the visualized representation of the reuse distances of the workloads. Figure~\ref{fig:mrc} shows an example of the miss ratio curve of Financial1, where x-axis is the cache size and y-axis is the cache miss ratio. The figure shows that MRC is a diminishing curve (the cache miss ratio decreases or stays the same with the increasing of the cache size). MRC could have several important applications. First, MRC can be used as an off-line optimal cache performance analysis like MIN \cite{anderson1990performance}. Second, MRC of workloads could be used to predict cache performance in future. Third, the MRC can help the system administrator determine the size of the cache needed to meet the system performance requirement. Finally, for a system running multi workloads concurrently, an automated cache manager can generate separate MRC for each individual workloads and leverage the MRCs to optimize the cache space allocation among all these different workloads to achieve the optimal system performance \cite{koller2015centaur, hu2015lama}. Although MRC is a powerful tool and has many vital application values, precise MRC measurement in the past requires $O(NlogM)$ time and $O(M)$ space for a trace of N accesses to M distinct elements \cite{olken1981efficient}. The expensive memory and computing resources overhead has restricted MRC to the offline applications. Thanks to the recent advances like SHARDs \cite{waldspurger2015efficient} and AET \cite{hu2016kinetic}, which reduce the memory overhead to $O(1)$ for the fixed-size MRC construction scheme and $R*O(M))$ for a fixed-rate scheme, where R is the sampling rate. Besides, SHARDs and AET reduce the computing overhead of constructing the whole MRC for a trace of N accesses to $O(N)$, which means the computing overhead of processing each individual request is merely $O(1)$. Moreover, Niu et al. proposed a parallel algorithm to compute the MRC, which could further reduces the computing overhead by 13-50 times. All the above mentioned advancements have removed the offline restriction of MRC and made it possible to be deployed as an powerful online workloads analysis tool. For example, variants of SHARDS \cite{waldspurger2015efficient} have been implemented and deployed as a key component in real prototype implementations to help the data cache management in big data centers \cite{stefanovici2015software, stefanovici2016sroute}.
+
+
+\begin{figure}[htbp!]
+\centerline{\includegraphics[width=0.48\textwidth, height=0.46\textwidth]{MRC.pdf}}
+\caption{Miss ratio curve of Financial1.}
+\label{fig:mrc}
+\end{figure}
+
+
+\section{Performance Modeling}
+Equation~\eqref{eq1} shows the definition of the over-provision, where $C_{user}$ and $C_{total}$ is the capacity for caching data and the total capacity of SSD, respectively. Equation~\eqref{eq2} gives the average cost of garbage collection, where $U$ is the average utilization of each block (valid pages ratio) during garbage collections. Therefore $U * N$ if the total number of Flash pages needed to be migrated, where N is number of pages per block. During valid page migration, a valid page should be first read from its physical location and then rewritten to other free space. Hence, the total cost of valid pages migration is cost of $U * N$ Flash reads and writes. The total GC cost is valid page migration cost plus the following block erase cost as depicted in Equation~\eqref{eq2}.  $Cost_{fr}$, $Cost_{fw}$, and $Cost_{erase}$ are the Flash read, write, and block erase overheads, respectively.
+\begin{equation}
+\label{eq1}
+OP = {\frac{C_{cache}}{C_{total}}}
+\end{equation}
+
+\begin{equation}
+\label{eq2}
+Cost_{gc} = U * N * (Cost_{fr} + Cost_{fw}) + Cost_{erase}
+\end{equation}
+
+Each victim block can obtain extra $(1 - U) * N$ free pages after garbage collection, so the real average Flash write cost can be depicted by Equation~\eqref{eq3}, which evenly splits the garbage collection overhead to the extra $(1 - U) * N$ free pages. If we assume that the valid pages are evenly distributed among the Flash blocks, then $U$ equals $OP$. However, due to the skewness of the real-world workloads and different garbage collection policies adopted inside SSDs, there could be striking difference between $U$ and $OP$. Some previous work tried to modeling the relationship between $U$ and $OP$ through a static equation \cite{kwon2010janus}, which can not work for all different workloads and SSD configurations. In this paper, we propose a sampling-based measurement to get the $U$ dynamically according to the changing of the workloads, which will be presented in Section V in detail. For a write hit in the SSD cache, we only need to write the new data to the SSD cache and invalidate the old-version of the data. While, for a write miss, a cache entry will be evicted out and written to the Disk at first, which involves a Flash read and Disk write operations. Then the new data will be inserted into the SSD cache with an additional Flash write operation. Equation~\eqref{eq4} shows the whole latency of this hybrid storage system. What's more, Equation~\eqref{eq4} could be further transformed into Equation~\eqref{eq5}, where $MR$ is the miss ratio equals $1-HR$.
+
+\begin{equation}
+\label{eq3}
+Cost'_{fw} = Cost_{fw} + {\frac{Cost_{gc}}{(1- U) * N}}
+\end{equation}
+
+
+\begin{equation}
+\label{eq4}
+Latency = HR * Cost'_{fw} + MR * (Cost_{fr} + Cost'_{fw} + Cost_{hd})
+\end{equation}
+
+
+\begin{equation}
+\label{eq5}
+Latency = Cost'_{fw} + MR * (Cost_{fr} + Cost_{hd})
+\end{equation}
+
+
+
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.48\textwidth, height=0.4\textwidth]{system.pdf}}
+	\caption{System Architecture.}
+	\label{fig:system}
+\end{figure}
+
+\section{Design and Implementation}
+In this paper, we propose to utilize the workload behavior in the past to guide the following Flash cache space management by combining our derived performance model with Equation~\eqref{eq5} and the MRC. Figure~\ref{fig:system} shows the system architecture of our hybrid storage system design. Our storage system contains a hard disk as the primary storage and an SSD as the second layer cache under the device driver. The component above the device driver is our reuse distance aware cache management, which consists of four major components: MRC generator, performance model, SSD partition, and normal cache management.
+
+The MRC generator is deployed to dynamically generate the miss ratio curve for the incoming IO requests periodically. Our proposed scheme tries to leverage the locality of the workloads in the history to guide the Flash cache allocation in future. Hence a time window T is introduced in our design to define how much information in the past should be used to guide the behavior in future and what's the frequency should we dynamically changing our configuration. Initially, the MRC generator is empty and receives the incoming requests to record the reuse distances. After time window T, a miss ratio curve will be generated based on all the requests in the previous time window. The generated miss ratio curve will be leveraged to guide the allocation of the cache space. After the allocation of the cache space, a new time window starts and the miss ratio curve for the previous time window will be cleared. How to choose a proper time window T may have significant impacts on the cache performance. A large time window T may introduce too much valueless information a long time ago and can't quickly responses to the changing trends of the workloads. While, a small time window T may generate a pessimistic estimation of locality of the workloads and can't fully utilize the SSD space to achieve the optimal performance. Currently, we configure the time window T as the logical time to process a fixed number of Flash page write requests. For 4 GB SSD buffer with 4 KB Flash pages, the time window T is configured as processing 8GB write requests, which equals to 2097152 Flash writes, while for a 16 GB SSD buffer, the time window is set as 40GB write quests that equal to 10485760 Flash write requests based on our sensitive analysis in experimental result section. As discussed in Section II, the memory overhead is $R*O(M)$ for a fixed-rate MRC scheme. If we assume $R$ is 0.0001 and each bucket of MRC requires 12 byte memory space, then for our small-scale and large-scale cache configurations, the memory overheads are merely 24 KB and 120KB, respectively. Even modern laptops are equipped with 8GB or 16GB memory, let alone the big data centers, so the memory overhead of constructing the MRC is totally affordable. The computing overhead of updating the MRC for each individual request is $O(1)$, for a CPU that works at 2 GHz, the computing cost is only about 0.5ns, which is negligible. Therefore, the computing overhead of the MRC construction is ignored in our evaluations.
+
+Based on the generated miss ratio curve from the MRC generator, the performance model component calculates the optimal SSD cache allocation scheme for current workloads based on equation~\eqref{eq5} that we derived in the previous section, which means how much cache space should be used as the data cache and how much should be reserved for over-provision. To make our performance model work properly, an accurate estimation of the utilization $U$ for the victim blocks during garbage collection processes is of utmost importance. Some previous work proposed to use a static equation \cite{kwon2010janus} to catch the relationship between $U$ and $OP$, which can not work for all different workloads and SSD configurations. In our implementation, we propose to use a training stage to get $U$ dynamically. At the beginning, we will configure our SSD cache with different OP values and get the corresponding $U$. Since it is impractical to explore all the possible OP values, our training only performs on several discrete OP values (15\%, 25\%, 35\%, 45\%, 55\%, 65\%, 75\%, 85\% in our design). Based on the training results, a mapping table between the OP and the $U$ will be builded and stored in the performance model. Since during the training stage, the SSD cache doesn't work at the its optimal configuration in majority of the time. Therefore, we will not perform the training process in ever time window, only when we detect a big shift of the workload properties like the reuse distance distributions, a retraining process will be trigged to update the OP to $U$ mapping table.
+
+The SSD allocator receives the optimal allocation result from the performance model and then adjust the ratio between the SSD data cache and over-provisional space. In our current implementation, the widely used classic least recently updated policy (LRU) is deployed to evaluate our design. There are three possible cases for the cache space allocation. First, the optimal cache configuration is the same with our current cache configuration, then nothing need to be changed. Second, the optimal data cache space is larger then the current data cache space, then we increase the maximum size of the LRU queue to the optimal value by storing more distinctive data in the cache. Third, the optimal data cache space is less than the current data cache size, then we need to reduce the maximum size the LRU queue by evicting the data from the LRU position of the cache queue. Since the SSD is used as the write buffering, all the data inside SSD are dirty. Therefore, during the data eviction process, the data will be written back to the primary hard disk. Besides, the Flash pages inside SSD which contains the to be evicted data also need to be marked as invalid so that to be reclaimed during the garbage collection processes in the future. Here, the inherent trim command of SSD could be utilized to inform the SSD of the corresponding data evictions.
+
+
+
+Initially, we set the preserved space as 15\% as the default value. Then for every request, we update the miss ratio curve. Whenever the number of requests reaches a pre-defined period, we leverage the MRC in the past period to find the optimal $C_{user}$ achieving the best performance. Then the cache space will be configured as this optimal value. Then the MRC will be reset and updated by the coming request in the next period. In this way, optimal $C_{user}$ could be dynamically adjusted according to the changing trends of the workloads. In our experiments, $C_{total}$ is configured as 4GB and the period is set as total number of Flash pages inside the SSD cache.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Configuration of Our Simulator}
+    \begin{tabular}{|c|c|}
+    \hline
+    Flash Page Size & 4KB \\
+    \hline
+    Flash Block Size & 256KB \\
+    \hline
+    GC Threshold & 5\% \\
+    \hline
+    Cache Size & 4GB, 16GB \\
+    \hline
+    Page Read Latency & 25us \\
+    \hline
+    Page Write Latency & 200us \\
+    \hline
+    Block Erase Latency & 1.5ms \\
+    \hline
+    Disk Access Latency & 5ms \\
+    \hline
+    \end{tabular}%
+  \label{tab:ssd}%
+\end{table}%
+
+
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{Characteristics of I/O workloads traces}
+    \begin{tabular}{lcccc}
+    \hline
+
+    \multirow{2}[0]{*} {Type} & Workloads & Working Set & Avg. Req. & Request\\
+          & Size (GB)  & Size (KB)   & Size (KB) & Amount (GB) \\
+    \hline
+    \multirow{2}[0]{*}{Small Scale} & Financial1 & 3.6   & 7.2   & 28.8 \\
+          & Homes & 5     & 3.9   & 66.8 \\
+    \hline
+    \multirow{2}[0]{*}{Large Scale} & Exchange & 23.29 & 12.4  & 131.69 \\
+          & MSNFS & 23.03 & 11.12 & 74.01 \\
+    \hline
+    \end{tabular}%
+  \label{tab:workloads}%
+\end{table}%
+
+
+\begin{figure*}[htbp]
+\centering
+\subfigure[Financial1]
+{
+\includegraphics[width=0.45\textwidth,height=2in]{performance_Financial1.pdf}
+}\qquad
+\subfigure[Homes]
+{
+\includegraphics[width=0.45\textwidth,height=2in]{performance_homes.pdf}
+}\qquad
+\subfigure[Exchange]
+{
+\includegraphics[width=0.45\textwidth,height=2in]{performance_exchange.pdf}
+}\qquad
+\subfigure[MSNFS]
+{
+\includegraphics[width=0.45\textwidth,height=2in]{performance_MSNFS.pdf}
+}
+\caption{Average response time of different static over provision configurations and our dynamic allocation scheme.}
+\label{fig:performance}
+\end{figure*}
+
+
+\section{Experimental Methodology and Results}
+To verify the efficiency of our proposed cache design, we modified the Disksim with SSD extension \cite{agrawal2008design} to implement our proposed design. Table~\ref{tab:ssd} lists the main parameters of our simulator. Flash page size is 4KB and each Flash block consists of 64 Flash pages. The Flash page read and write latencies are configured as 25us and 200us, respectively. The Flash block erase cost is 1.5ms and the garbage collection threshold is set as 5\%. The average hard disk access latency is defined as 5ms. The workloads used as our input are from \cite{Umass2007} and \cite{Snia2011}. The properties of these workloads are presented in Table~\ref{tab:workloads}. Basically, these four workloads could be divided into two categories based on the working set size: small scale (Financial1 and homes) and large scale (Exchange and MSNFS). Accordingly, our simulator is configured with two different SSD physical sizes: 4GB for the small scale workloads, while 16GB for the large scale workloads.
+
+
+
+\begin{figure*}[htbp]
+\centering
+\subfigure[Financial1]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{hit_ratio_Financial1.pdf}
+}\qquad
+\subfigure[Homes]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{hit_ratio_homes.pdf}
+}\qquad
+\subfigure[Exchange]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{hit_ratio_exchange.pdf}
+}\qquad
+\subfigure[MSNFS]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{hit_ratio_MSNFS.pdf}
+}
+\caption{Cache hit ratios of different static over provision configurations and our dynamic allocation scheme.}
+\label{fig:hit_ratio}
+\end{figure*}
+
+
+\begin{figure*}[htbp]
+\centering
+\subfigure[Financial1]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{erase_Financial1.pdf}
+}\qquad
+\subfigure[Homes]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{erase_homes.pdf}
+}\qquad
+\subfigure[Exchange]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{erase_exchange.pdf}
+}\qquad
+\subfigure[MSNFS]
+{
+\includegraphics[width=0.45\textwidth,height=1.8in]{erase_MSNFS.pdf}
+}
+\caption{Erase counts of different static over provision configurations and our dynamic allocation scheme.}
+\label{fig:erase}
+\end{figure*}
+
+\subsection{Performance}
+In this section, we evaluate the performance of our dynamical SSD cache allocation design. For comparison, we also implement the static SSD cache allocation schemes, which includes the following over-provisioning configurations: 15\%, 25\%, 35\%, 45\%, 55\%, 65\%, 75\%, and 85\%. For the static cache allocation schemes, the over-provision of SSD cache is configured as a fixed value like 35\% throughout the whole simulation process. While, our dynamic cache allocation scheme will dynamically adjust the over-provisioning space to achieve the optimal performance. Figure~\ref{fig:performance} and Figure~\ref{fig:hit_ratio} show the average response time and cache hit ratio of the static allocation scheme and our dynamical allocation scheme, respectively. From the results, we can observe that the cache hit ratio decrease or keep the same with the increasing of the over-provisioning space. The reason is as follows. Higher over-provision means more SSD space being reserved for out-of-place update and less capacity for caching data, which will lead to lower cache hit ratio. For traditional cache devices like DRAM and SRAM, lower cache hit ratio means lower cache performance. However, due to the internal garbage collection processes, higher cache hit ratio can not always guarantee higher cache performance for SSD-based cache. Figure~\ref{fig:performance} shows the cache performance variations with the increasing of the over-provision from 15\% to 85\%. The results show that the cache performance with the increasing of the over-provision is a concave curve, which first increases with the increasing of the over-provision and then decreases with the continuously increasing of the over-provision. When the over-provision is low, the frequent garbage collection processes are the dominant latency contributor. Therefore, increasing the over-provisioning space can reduce the garbage collection activities and improve the system performance. However, when the over-provision reaches the inflection point, the garbage collection overhead become the secondary contributor to the system latency and the long-latency disk accesses due to the cache misses is dominated, further increasing the over-provisioning space will lead to worse system performance due to the lower cache hit ratio.
+
+\begin{figure*}[htbp]
+\centering
+\subfigure
+{
+\includegraphics[width=0.45\textwidth,height=2in]{sensitity_f_h.pdf}
+}\qquad
+\subfigure
+{
+\includegraphics[width=0.45\textwidth,height=2in]{sensitity_e_m.pdf}
+}
+\caption{Effect of different time window sizes on the cache performance.}
+\label{fig:sensitity}
+\end{figure*}
+
+What's more, the results also show that different workloads has different inflection points or optimal static over-provisioning space, for example, the optimal static over-provisions for Financial1, Homes, Exchange, and MSNFS are 85\%, 35\%, 45\%, and 25\%, respectively. Therefore, static cache allocation scheme can not always achieve the best system performance. The rightmost bar in the figures shows the performance of our reuse distance aware dynamical cache allocation scheme. The results strongly indicates the effectiveness of our reuse distance aware dynamical cache allocation scheme, which can always obtain the system performance close to the static optimal allocation scheme for Financial1, Homes, and Exchange or even better than the static optimal allocation scheme for MSNFS.
+
+\subsection{Endurance}
+Number of erases is the widely used metric to evaluate the lifetime of SSDs. Figure~\ref{fig:erase} present the number of erase for different static cache allocation and our dynamic allocation scheme. For all the four workloads, the number of erase will decrease with the augment of the over-provisioning space. The reason is straightforward, higher over-provisioning space can delay the garbage collection processes and improve the garbage collection efficiency. Compared to the typical over-provision configurations which changes from 7\% to 35\%, our dynamic cache space allocation scheme not only enhances the system performance, but also reduces the number of erase operations and hence prolongs the lifetime of the cache devices. Besides maximizing the system performance, our dynamic allocation scheme could also be used to maximize the device lifetime without violation of the system performance requirement. For example, if the system performance requirement is 2ms, we then can relax the over-provisioning space to 65\%, which can prolong the SSD lifetime by nearly 20\% compared with the 35\% configuration for the optimal performance.
+
+
+
+
+
+\subsection{Sensitive Analysis}
+In this section, we discuss how the variations of the time window size will affect the system performance. On one hand, a small time window might pessimistically estimate the locality of the workloads and can't effectively leverage the cache space to get the optimal system performance. On the other hand, a large time window can bring in too much old information with little value and can't take quick action to keep up with the changing locality of the workloads. Figure~\ref{fig:sensitity} shows the system performance with different time window sizes. For the small cache with 4G capacity, we change the time window from 4GB to 16GB with the 2GB as the step size. While for the large cache with 16GB capacity, the range and step size of the time windows are 16GB to 64GB and 8GB, respectively. For Homes, when the time window increases from 4GB to 8 GB, the system performance are noticeably improved due to the full exploration of the workload locality. However,the system performance are relatively stable or only with limited reduction after 8GB, which means the locality of the same workloads are relatively stable and the effectiveness of utilizing the locality of the workloads in the past to guide the cache space allocation in the future. Similar conclusions could be made for the Exchange and MSNFS. The only exception is the Financial1, when the time window size increases from 4GB to 8GB, there is no big differences of the system performance. After 8GB, increasing the time window can lead to some sacrifice of the system performance. The possible reason is the limited active working set size of Financial1, which makes 4GB is big enough to capture the locality of the workloads.
+
+
+
+
+\section{Related Work}
+Although cache algorithms and design are old topics and many advanced cache algorithms have been proposed to improve the cache performance like LIRS \cite{jiang2002lirs} and ARC \cite{megiddo2003arc}. However, the optimizations of these advanced cache algorithms are based on the traditional cache devices like DRAM and SRAM and use the cache hit ratio as a performance metric, which can not works consistently for SSD-based cache due to the internal garbage collection processes. When SSDs are used as caches in hybrid storage solutions, many optimizations have been proposed to improve the cache performance and lifetime of cache devices. Kgil et al. \cite{kgil2008improving} proposed to take the asymmetrical read and write performance into account by splitting the Flash cache into separate read and write region with dynamically changeable ECC strength and cell density to improve reliability and lifetime of Flash memory. NetApp used Flash memory as a second layer read cache while used the NVRAM as the second layer write cache \cite{Mark2010}. Hystor proposed by Chen et al. \cite{chen2011hystor} verified the efficiency to deploy SSD a write buffer for the performance-critical requests. Based on the highly skewness of real-world IO traces, Pritchett et al. proposed a highly-selective caching scheme for SSD cache \cite{pritchett2010sievestore}. An lazy adaptive replacement (LARC) scheme put forward by Huang et al. \cite{huang2016improving} tries to delay the replacement of the cache entry to reduce the possible cache pollution and improve the cache hit ratios. Since traditional Belady's MIN \cite{anderson1990performance} only considers the cache hit ratio but not the endurance of the cache device, Cheng et al. proposed a new Flash-aware MIN cache algorithms for SSD cache \cite{cheng2016erasing}. However, both LARC and Flash-aware MIN are still using the cache hit ratio as the performance metric, which might not obtain the optimal SSD cache performance. In Flash-aware MIN, data that will never result in cache hit or result less than a pre-defined times cache hit will never be inserted into SSD cache to prolong the SSD endurance. Since small random writes can significantly degrade the performance of SSD cache and bring more serve write amplification problem, RIPQ \cite{tang2015ripq} is proposed to aggregate small writes into a large block buffer to improve the SSD cache performance. Huang et al. \cite{huang2014flexecc} proposed FlexECC, which selectively replace ECC with EDC to improve the SSD-based cache performance. The kernel idea of FlexECC is that for clean data in SSD cache with backup in the hard disk, EDC will be applied. While for dirty data without backup in the hard disk, ECC will be applied to guarantee the reliability.
+
+
+Beside, Oh et al. proposed APS to dynamically split the SSD cache space into read, write, and over-provisional regions \cite{oh2012caching}. However, many ghost LRU caches with different cache sizes are needed to get the cache hit ratios under different cache capacities, which is impractical due to high complexity and memory overhead. Besides, a static equation are applied to translate the OP to $U$, which also makes their design inaccurate. Xia and Xiao proposed to leverage the out-of-place update property and the over-provisional space to improve the SSD read cache performance \cite{xia2015Flash, xia2016high}. In their work, they also shows that traditional advanced cache algorithms like ARC might can obtain higher cache hit ratio, but may result in worse real cache performance like the average response time.
+
+
+\section{Conclusion}
+Unlike traditional cache devices as DRAM and SRAM, SSDs have internal garbage collection processes, which could significantly degrade the cache performance. Previous optimizations based on traditional cache devices might not obtain consistent performance for SSD cache and even shorten the device lifetime. Therefore, how to compromise the cache hit ratio with the internal garbage collection overhead is of vital importance to obtain the optimal system performance. In this paper, we propose a locality aware dynamic SSD cache space allocation scheme by utilizing the MRC in the past to guide the SSD cache allocation to achieve the optimal system performance. The experimental result clearly demonstrate that our locality aware dynamic SSD cache allocation scheme can always achieve the performance close or even better than the static optimal system performance. Besides, compared with the typical SSD over-provisioning configurations, our dynamic scheme also has the lifetime advantage.
+
+
+
+\section{Acknowledgements}
+This research is sponsored in part by U.S. National Science Foundation grants CCF-1547804 and CSR-1526190. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals/conferences use top floats
+% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
+% command of the stfloats package.
+
+
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+{\footnotesize \bibliographystyle{IEEEtran}
+\bibliography{references}}
+
+%\begin{thebibliography}{1}
+%
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%
+%\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+
